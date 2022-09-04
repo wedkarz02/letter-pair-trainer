@@ -26,7 +26,14 @@ except:
 workbook = openpyxl.load_workbook(path)
 
 try:
-    sheet = workbook["Letter"]
+    sheet = workbook["Letter Pairs"]
 except:
     print("\033[91m[ERROR]\033[0m: No sheet named 'Letter Pairs' found. See README.md for more information.\n")
     os._exit(1)
+
+
+def print_display(letter_pair_value, lead_letter, follow_letter, parity=False):
+    if parity:
+        print(f"Parity {lead_letter}: {letter_pair_value}")
+    else:
+        print(f"{lead_letter}{follow_letter}: {letter_pair_value}")
