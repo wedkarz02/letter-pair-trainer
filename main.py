@@ -33,7 +33,36 @@ except:
 
 
 def print_display(letter_pair_value, lead_letter, follow_letter, parity=False):
+    os.system("cls")
+
     if parity:
         print(f"Parity {lead_letter}: {letter_pair_value}")
     else:
         print(f"{lead_letter}{follow_letter}: {letter_pair_value}")
+
+
+rows = [row for row in sheet.iter_rows(max_row=23)]
+
+while True:
+    row_index = random.randint(1, 22)
+    col_index = random.randint(1, 22)
+
+    row = rows[row_index]
+    cell = row[col_index].value
+
+    for i in range(3, 0, -1):
+        if cell is None:
+            print_display(i, rows[0][col_index].value, row[0].value, parity=True)
+        else:
+            print_display(i, rows[0][col_index].value, row[0].value)
+    
+        time.sleep(1)
+
+    if cell is None:
+        parity_value = sheet[24][col_index].value
+        print_display(parity_value, rows[0][col_index].value, row[0].value, parity=True)
+    else:
+        print_display(cell, rows[0][col_index].value, row[0].value)
+    
+    time.sleep(2)
+
