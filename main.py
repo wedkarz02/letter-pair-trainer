@@ -7,7 +7,7 @@ import random
 try:
     import openpyxl
 except:
-    print("\033[91m[ERROR]\033[0m: openpyxl not installed.\n")
+    print("\033[91m[ERROR]\033[0m: 'openpyxl' not installed.\n")
     os._exit(1)
 
 try:
